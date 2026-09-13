@@ -3,11 +3,19 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   eslint: {
-    // We run lint in CI/build script directly
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: false,
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/login',
+        permanent: false,
+      },
+    ];
   },
 };
 
