@@ -5,6 +5,12 @@ import { Project } from '@/types';
 
 export async function getProjects(): Promise<Project[]> {
   if (!firebaseEnabled || !db) return demoProjects;
-  const snapshot = await getDocs(query(collection(db, 'projects'), orderBy('updatedAt', 'desc')));
-  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Project));
+  try {
+    const snapshot = await getDocs(query(collection(db, 'projects'), orderBy('updatedAt', 'desc')));
+    if (snapshot.empty) return demoProjects;
+    return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Project));
+  } catch (error) {
+    console.warn('Firestore fetch failed, falling back to seed projects:', error);
+    return demoProjects;
+  }
 }
