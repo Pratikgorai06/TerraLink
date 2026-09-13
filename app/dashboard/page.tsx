@@ -408,7 +408,7 @@ export default function Dashboard() {
               </section>
 
               {/* Projects Table & Alerts Split */}
-              <section className="dashboard-grid">
+              <section className="dashboard-grid dashboard-table-grid">
                 <div className="panel">
                   <div className="panel-header">
                     <div className="panel-header-left">
@@ -611,7 +611,7 @@ export default function Dashboard() {
                 projects={projects}
                 onSelectProject={(proj) => setSelectedProject(proj)}
               />
-              <div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+              <div className="gis-feature-cards">
                 <div style={{ padding: 14, background: 'var(--bg-subtle)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--emerald)', fontWeight: 600, fontSize: 13, marginBottom: 4 }}>
                     <Layers size={14} />
@@ -776,7 +776,7 @@ export default function Dashboard() {
                 <Sliders size={16} color="var(--sky)" />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+              <div className="settings-grid">
                 <div style={{ padding: 18, background: 'var(--bg-subtle)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', display: 'flex', flexDirection: 'column', gap: 14 }}>
                   <h4 style={{ fontSize: 13, color: 'var(--text-primary)', fontWeight: 600 }}>SLA Escalation Windows</h4>
                   <div>
